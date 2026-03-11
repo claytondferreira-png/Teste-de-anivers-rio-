@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<title>Convite</title>
+<title>Birthday</title>
 
 <style>
 
@@ -38,12 +38,35 @@ button:hover{
 transform:scale(1.1);
 }
 
-/* bolo */
+/* confete */
+
+body::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(circle,#fff 2px,transparent 2px),
+radial-gradient(circle,#ff4d6d 2px,transparent 2px),
+radial-gradient(circle,#ffd6e0 2px,transparent 2px);
+background-size:40px 40px;
+animation:confetti 8s linear infinite;
+opacity:0.5;
+}
+
+@keyframes confetti{
+from{transform:translateY(-100px)}
+to{transform:translateY(800px)}
+}
+
+/* cena do bolo */
 
 .cakeScene{
 display:none;
 text-align:center;
 }
+
+/* bolo */
 
 .cake{
 position:relative;
@@ -166,15 +189,15 @@ to{opacity:1}
 
 <body>
 
-<!-- convite -->
-
 <div class="invite" id="invite">
-<h1>💌 Você recebeu um convite</h1>
-<br>
-<button onclick="abrir()">Abrir</button>
-</div>
 
-<!-- bolo -->
+<h1>💌 Você recebeu um convite</h1>
+
+<br>
+
+<button onclick="abrir()">Abrir</button>
+
+</div>
 
 <div class="cakeScene" id="cakeScene">
 
@@ -185,16 +208,18 @@ to{opacity:1}
 </div>
 
 <div class="icing" id="icing">
+
 <div class="drip drip1" id="drip1"></div>
 <div class="drip drip2" id="drip2"></div>
 <div class="drip drip3" id="drip3"></div>
+
 </div>
 
 <div class="layer" id="layer3"></div>
 <div class="layer" id="layer2"></div>
 <div class="layer" id="layer1"></div>
 
-<h1>Happy Birthday My Love 🎂</h1>
+<h1>Happy Birthday 🎂</h1>
 
 </div>
 
@@ -204,20 +229,14 @@ to{opacity:1}
 
 function abrir(){
 
-document.getElementById("invite").style.display="none"
-document.getElementById("cakeScene").style.display="block"
-
-/* camadas */
+invite.style.display="none"
+cakeScene.style.display="block"
 
 setTimeout(()=>layer1.classList.add("showLayer"),400)
 setTimeout(()=>layer2.classList.add("showLayer"),800)
 setTimeout(()=>layer3.classList.add("showLayer"),1200)
 
-/* cobertura */
-
 setTimeout(()=>icing.classList.add("showIcing"),1700)
-
-/* gotas */
 
 setTimeout(()=>{
 drip1.classList.add("showDrip")
@@ -225,9 +244,7 @@ drip2.classList.add("showDrip")
 drip3.classList.add("showDrip")
 },2200)
 
-/* vela */
-
-setTimeout(()=>candle.classList.add("showCandle"),2700)
+setTimeout(()=>candle.classList.add("showCandle"),2600)
 
 }
 
