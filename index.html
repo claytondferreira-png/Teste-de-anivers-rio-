@@ -5,60 +5,76 @@
 <title>Birthday Animation</title>
 
 <style>
+
 body{
   margin:0;
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#1e1e1e;
+  background:#f6a5b6;
   font-family:Arial;
 }
 
-/* Card */
-.card{
-  width:380px;
-  height:250px;
-  background:#f6a5b6;
-  border-radius:20px;
-  position:relative;
+/* container */
+.scene{
   text-align:center;
-  overflow:hidden;
 }
 
-/* Bolo */
+/* bolo */
 .cake{
-  position:absolute;
-  bottom:70px;
-  left:50%;
-  transform:translateX(-50%);
+  position:relative;
+  margin:auto;
 }
 
-/* Camadas do bolo */
+/* camadas */
 .layer{
-  width:120px;
-  height:25px;
+  width:160px;
+  height:30px;
   background:#8b4513;
-  margin-top:4px;
-  border-radius:4px;
-  opacity:0;
-  transform:translateY(-40px);
-}
-
-/* Cobertura */
-.icing{
-  width:120px;
-  height:12px;
-  background:white;
+  margin:4px auto;
   border-radius:6px;
   opacity:0;
-  transform:translateY(-20px);
+  transform:translateY(-80px);
 }
 
-/* Velas */
+/* cobertura */
+.icing{
+  width:160px;
+  height:18px;
+  background:white;
+  border-radius:10px;
+  position:relative;
+  margin:auto;
+  opacity:0;
+  overflow:visible;
+}
+
+/* gotas */
+.drip{
+  position:absolute;
+  width:20px;
+  height:25px;
+  background:white;
+  border-radius:50%;
+  top:10px;
+  animation:dripMove 2s infinite ease-in-out;
+}
+
+.drip:nth-child(1){ left:20px; animation-delay:0s; }
+.drip:nth-child(2){ left:60px; animation-delay:0.4s; }
+.drip:nth-child(3){ left:100px; animation-delay:0.8s; }
+
+@keyframes dripMove{
+  0%{ transform:translateY(-10px) scaleY(0.5); }
+  50%{ transform:translateY(10px) scaleY(1.2); }
+  100%{ transform:translateY(-10px) scaleY(0.5); }
+}
+
+/* vela */
 .candle{
   width:10px;
-  height:30px;
+  height:40px;
   background:white;
   margin:auto;
   position:relative;
@@ -66,27 +82,26 @@ body{
 }
 
 .flame{
-  width:12px;
-  height:16px;
+  width:14px;
+  height:18px;
   background:gold;
   border-radius:50%;
   position:absolute;
-  top:-15px;
-  left:-1px;
-  animation:flame 1s infinite alternate;
+  top:-18px;
+  left:-2px;
+  animation:flame 0.8s infinite alternate;
 }
 
 @keyframes flame{
-  from{transform:scale(1);}
-  to{transform:scale(1.2);}
+  from{ transform:scale(1); }
+  to{ transform:scale(1.2); }
 }
 
-/* Texto */
+/* texto */
 h1{
-  position:absolute;
-  bottom:20px;
-  width:100%;
   color:#c2185b;
+  margin-top:30px;
+  font-size:32px;
 }
 
 /* animações */
@@ -100,7 +115,7 @@ h1{
 }
 
 .showCandle{
-  animation:fade 0.6s forwards;
+  animation:fade 0.5s forwards;
 }
 
 @keyframes drop{
@@ -111,16 +126,18 @@ h1{
 }
 
 @keyframes icingDrop{
+  from{
+    transform:scaleX(0.2);
+    opacity:0;
+  }
   to{
+    transform:scaleX(1);
     opacity:1;
-    transform:translateY(0);
   }
 }
 
 @keyframes fade{
-  to{
-    opacity:1;
-  }
+  to{ opacity:1; }
 }
 
 </style>
@@ -128,7 +145,7 @@ h1{
 
 <body>
 
-<div class="card">
+<div class="scene">
 
 <div class="cake">
 
@@ -136,7 +153,11 @@ h1{
 <div class="flame"></div>
 </div>
 
-<div class="icing" id="icing"></div>
+<div class="icing" id="icing">
+<div class="drip"></div>
+<div class="drip"></div>
+<div class="drip"></div>
+</div>
 
 <div class="layer" id="layer3"></div>
 <div class="layer" id="layer2"></div>
@@ -144,22 +165,25 @@ h1{
 
 </div>
 
-<h1>Happy Birthday My Love!</h1>
+<h1>Happy Birthday My Love</h1>
 
 </div>
 
 <script>
 
-/* camadas caindo */
+/* camadas */
+
 setTimeout(()=>layer1.classList.add("showLayer"),500)
 setTimeout(()=>layer2.classList.add("showLayer"),900)
 setTimeout(()=>layer3.classList.add("showLayer"),1300)
 
 /* cobertura */
-setTimeout(()=>icing.classList.add("showIcing"),1900)
+
+setTimeout(()=>icing.classList.add("showIcing"),1800)
 
 /* vela */
-setTimeout(()=>candle.classList.add("showCandle"),2400)
+
+setTimeout(()=>candle.classList.add("showCandle"),2300)
 
 </script>
 
