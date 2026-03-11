@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Animation</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#1e1e1e;
+  font-family:Arial;
+}
+
+/* Card */
+.card{
+  width:380px;
+  height:250px;
+  background:#f6a5b6;
+  border-radius:20px;
+  position:relative;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Bolo */
+.cake{
+  position:absolute;
+  bottom:70px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* Camadas do bolo */
+.layer{
+  width:120px;
+  height:25px;
+  background:#8b4513;
+  margin-top:4px;
+  border-radius:4px;
+  opacity:0;
+  transform:translateY(-40px);
+}
+
+/* Cobertura */
+.icing{
+  width:120px;
+  height:12px;
+  background:white;
+  border-radius:6px;
+  opacity:0;
+  transform:translateY(-20px);
+}
+
+/* Velas */
+.candle{
+  width:10px;
+  height:30px;
+  background:white;
+  margin:auto;
+  position:relative;
+  opacity:0;
+}
+
+.flame{
+  width:12px;
+  height:16px;
+  background:gold;
+  border-radius:50%;
+  position:absolute;
+  top:-15px;
+  left:-1px;
+  animation:flame 1s infinite alternate;
+}
+
+@keyframes flame{
+  from{transform:scale(1);}
+  to{transform:scale(1.2);}
+}
+
+/* Texto */
+h1{
+  position:absolute;
+  bottom:20px;
+  width:100%;
+  color:#c2185b;
+}
+
+/* animações */
+
+.showLayer{
+  animation:drop 0.7s forwards;
+}
+
+.showIcing{
+  animation:icingDrop 0.7s forwards;
+}
+
+.showCandle{
+  animation:fade 0.6s forwards;
+}
+
+@keyframes drop{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes icingDrop{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fade{
+  to{
+    opacity:1;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="cake">
+
+<div class="candle" id="candle">
+<div class="flame"></div>
+</div>
+
+<div class="icing" id="icing"></div>
+
+<div class="layer" id="layer3"></div>
+<div class="layer" id="layer2"></div>
+<div class="layer" id="layer1"></div>
+
+</div>
+
+<h1>Happy Birthday My Love!</h1>
+
+</div>
+
+<script>
+
+/* camadas caindo */
+setTimeout(()=>layer1.classList.add("showLayer"),500)
+setTimeout(()=>layer2.classList.add("showLayer"),900)
+setTimeout(()=>layer3.classList.add("showLayer"),1300)
+
+/* cobertura */
+setTimeout(()=>icing.classList.add("showIcing"),1900)
+
+/* vela */
+setTimeout(()=>candle.classList.add("showCandle"),2400)
+
+</script>
+
+</body>
+</html>
