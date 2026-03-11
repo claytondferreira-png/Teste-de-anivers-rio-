@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<title>Birthday Animation</title>
+<title>Convite</title>
 
 <style>
 
@@ -17,28 +17,33 @@ font-family:Arial;
 overflow:hidden;
 }
 
-/* confete */
+/* convite */
 
-body::before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background-image:
-radial-gradient(circle,#fff 2px,transparent 2px),
-radial-gradient(circle,#ff4d6d 2px,transparent 2px),
-radial-gradient(circle,#ffd6e0 2px,transparent 2px);
-background-size:40px 40px;
-animation:confetti 8s linear infinite;
-opacity:0.6;
+.invite{
+text-align:center;
 }
 
-@keyframes confetti{
-from{transform:translateY(-100px)}
-to{transform:translateY(600px)}
+button{
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:#c2185b;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
 }
 
 /* bolo */
+
+.cakeScene{
+display:none;
+text-align:center;
+}
 
 .cake{
 position:relative;
@@ -65,7 +70,6 @@ background:white;
 border-radius:12px;
 margin:auto;
 position:relative;
-overflow:visible;
 }
 
 /* gotas */
@@ -113,7 +117,6 @@ to{transform:scale(1.2)}
 /* texto */
 
 h1{
-text-align:center;
 color:#c2185b;
 margin-top:30px;
 font-size:34px;
@@ -163,6 +166,18 @@ to{opacity:1}
 
 <body>
 
+<!-- convite -->
+
+<div class="invite" id="invite">
+<h1>💌 Você recebeu um convite</h1>
+<br>
+<button onclick="abrir()">Abrir</button>
+</div>
+
+<!-- bolo -->
+
+<div class="cakeScene" id="cakeScene">
+
 <div class="cake">
 
 <div class="candle" id="candle">
@@ -179,11 +194,18 @@ to{opacity:1}
 <div class="layer" id="layer2"></div>
 <div class="layer" id="layer1"></div>
 
-<h1>Happy Birthday My Love</h1>
+<h1>Happy Birthday My Love 🎂</h1>
+
+</div>
 
 </div>
 
 <script>
+
+function abrir(){
+
+document.getElementById("invite").style.display="none"
+document.getElementById("cakeScene").style.display="block"
 
 /* camadas */
 
@@ -191,11 +213,11 @@ setTimeout(()=>layer1.classList.add("showLayer"),400)
 setTimeout(()=>layer2.classList.add("showLayer"),800)
 setTimeout(()=>layer3.classList.add("showLayer"),1200)
 
-/* cobertura espalhando */
+/* cobertura */
 
 setTimeout(()=>icing.classList.add("showIcing"),1700)
 
-/* gotas escorrendo */
+/* gotas */
 
 setTimeout(()=>{
 drip1.classList.add("showDrip")
@@ -206,6 +228,8 @@ drip3.classList.add("showDrip")
 /* vela */
 
 setTimeout(()=>candle.classList.add("showCandle"),2700)
+
+}
 
 </script>
 
